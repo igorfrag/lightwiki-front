@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import HomePost from '../../components/HomePost';
 
 export const Route = createFileRoute('/posts/$postid')({
     loader: async ({ params }) => {
@@ -18,11 +19,10 @@ function PostPage() {
     const post = Route.useLoaderData();
 
     return (
-        <div>
-            <h2>{post.title}</h2>
-            <div className='post-content'>
-                <p>{post.body}</p>
-            </div>
-        </div>
+        <HomePost
+            title={post.title}
+            body={post.body}
+            createdAt={post.created_at}
+        />
     );
 }

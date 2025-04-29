@@ -37,6 +37,15 @@
     text-align: left;
 }
 
+.home-post {
+    max-width: 480px;
+    margin: auto;
+}
+
+.home-post {
+    text-align: justify;
+}
+
 @media screen and (max-width: 480px) {
     .header {
         padding: 0.5em;

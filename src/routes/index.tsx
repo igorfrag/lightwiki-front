@@ -1,13 +1,41 @@
 import { createFileRoute } from '@tanstack/react-router';
+import HomePost from '../components/HomePost';
+
+interface Post {
+    title: string;
+    body: string;
+    created_at: string;
+    id: number;
+}
 
 export const Route = createFileRoute('/')({
     component: Index,
+    loader: async () => {
+        const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/posts`
+        );
+        if (!response.ok) {
+            throw new Error('Error Fetching');
+        }
+        const posts = (await response.json()) as Post[];
+        console.log(posts);
+        return posts;
+    },
 });
 
 function Index() {
+    const posts = Route.useLoaderData();
+
     return (
-        <div>
-            <h3>Welcome Home!</h3>
-        </div>
+        <>
+            {posts.map((post) => (
+                <HomePost
+                    key={post.id}
+                    title={post.title}
+                    body={post.body}
+                    createdAt={post.created_at}
+                />
+            ))}
+        </>
     );
 }
