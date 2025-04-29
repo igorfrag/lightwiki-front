@@ -11,7 +11,7 @@ const HomePost: React.FC<HomePostProps> = ({ title, body, createdAt }) => {
     return (
         <div className='home-post'>
             <h1>{title}</h1>
-            <p>{body}</p>
+            <p className='preserve'>{body}</p>
             <time dateTime={localDate}>Posted at {localDate}</time>
         </div>
     );

@@ -46,6 +46,10 @@
     text-align: justify;
 }
 
+.preserve {
+    white-space: pre-wrap;
+}
+
 @media screen and (max-width: 480px) {
     .header {
         padding: 0.5em;
