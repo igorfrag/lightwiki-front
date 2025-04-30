@@ -23,6 +23,7 @@ function PostPage() {
             title={post.title}
             body={post.body}
             createdAt={post.created_at}
+            id={post.id}
         />
     );
 }

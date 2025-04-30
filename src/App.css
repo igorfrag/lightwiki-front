@@ -50,6 +50,20 @@
     white-space: pre-wrap;
 }
 
+.home-post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-post-header > button {
+    transition: 0.5s;
+}
+.home-post-header > button:hover {
+    border-color: transparent;
+    color: red;
+}
+
 @media screen and (max-width: 480px) {
     .header {
         padding: 0.5em;

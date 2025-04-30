@@ -18,7 +18,6 @@ export const Route = createFileRoute('/')({
             throw new Error('Error Fetching');
         }
         const posts = (await response.json()) as Post[];
-        console.log(posts);
         return posts;
     },
 });
@@ -31,6 +30,7 @@ function Index() {
             {posts.map((post) => (
                 <HomePost
                     key={post.id}
+                    id={post.id}
                     title={post.title}
                     body={post.body}
                     createdAt={post.created_at}
