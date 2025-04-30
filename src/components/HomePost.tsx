@@ -21,7 +21,7 @@ async function handleDelete(e: number) {
         if (response.ok) {
             const result = await response.json();
             console.log('Delete Sucessful', result);
-            location.reload();
+            window.location.replace('/');
         } else {
             console.error('Delete Failed', response.statusText);
         }
@@ -35,14 +35,21 @@ const HomePost: React.FC<HomePostProps> = ({ title, body, createdAt, id }) => {
     return (
         <div className='home-post'>
             <div className='home-post-header'>
-                <h1>{title}</h1>
+                <h2>{title}</h2>
                 <button type='button' onClick={() => handleDelete(id)}>
                     X
                 </button>
             </div>
+            <div className='home-post-body'>
+                <img
+                    className='home-post-image'
+                    src='/picapau.jpeg'
+                    alt='Pica Pau'
+                />
 
-            <p className='preserve'>{body}</p>
-            <time dateTime={localDate}>Posted at {localDate}</time>
+                <p className='home-post-text'>{body}</p>
+                <time dateTime={localDate}>Posted at {localDate}</time>
+            </div>
         </div>
     );
 };

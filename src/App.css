@@ -38,16 +38,16 @@
 }
 
 .home-post {
-    max-width: 480px;
+    max-width: 600px;
     margin: auto;
+    padding: 10px;
+    text-align: start;
 }
 
-.home-post {
-    text-align: justify;
-}
-
-.preserve {
-    white-space: pre-wrap;
+.home-post::after {
+    content: '';
+    display: table;
+    clear: both;
 }
 
 .home-post-header {
@@ -56,7 +56,12 @@
     align-items: center;
 }
 
+.home-post-header > h2 {
+    margin-left: 20px;
+}
+
 .home-post-header > button {
+    margin-left: 20px;
     transition: 0.5s;
 }
 .home-post-header > button:hover {
@@ -64,16 +69,72 @@
     color: red;
 }
 
+.home-post-body {
+    align-items: flex-start;
+    max-width: 600px;
+    margin: auto;
+}
+
+.home-post-text {
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+.home-post-image {
+    width: 250px;
+    float: right;
+    height: auto;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 5px 5px 2px 0px;
+}
+
 @media screen and (max-width: 480px) {
-    .header {
-        padding: 0.5em;
+    .header-content {
+        justify-content: space-around;
+    }
+    .header-content > h1 {
+        margin: 0px;
+    }
+    .header-content > p {
+        display: none;
+    }
+    .home-post-header {
+        justify-content: space-between;
+    }
+    .home-post-header > h1 {
+        font-size: 1.6em;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .header-content {
-        flex-direction: column;
-        justify-content: center;
+    .home-post-header > button {
+        margin-right: 20px;
+        margin-left: 20px;
     }
-    .header-content > h2 {
-        margin: 0px;
+
+    .home-post {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home-post-body {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-post-image {
+        float: none;
+        height: auto;
+        box-shadow: 5px 5px 2px 0px;
+        margin: auto;
+        margin-bottom: 1em;
+    }
+
+    .new-post-form {
+        max-width: 85vw;
     }
 }

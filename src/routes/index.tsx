@@ -27,15 +27,17 @@ function Index() {
 
     return (
         <>
-            {posts.map((post) => (
-                <HomePost
-                    key={post.id}
-                    id={post.id}
-                    title={post.title}
-                    body={post.body}
-                    createdAt={post.created_at}
-                />
-            ))}
+            <div>
+                {posts.map((post) => (
+                    <HomePost
+                        key={post.id}
+                        id={post.id}
+                        title={post.title}
+                        body={post.body}
+                        createdAt={post.created_at}
+                    />
+                ))}
+            </div>
         </>
     );
 }
