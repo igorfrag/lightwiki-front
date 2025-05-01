@@ -6,6 +6,7 @@ interface Post {
     body: string;
     created_at: string;
     id: number;
+    image_path: string;
 }
 
 export const Route = createFileRoute('/')({
@@ -35,6 +36,7 @@ function Index() {
                         title={post.title}
                         body={post.body}
                         createdAt={post.created_at}
+                        imagePath={`${import.meta.env.VITE_API_URL}${post.image_path}`}
                     />
                 ))}
             </div>

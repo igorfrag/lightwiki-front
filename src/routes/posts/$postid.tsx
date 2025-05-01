@@ -24,6 +24,7 @@ function PostPage() {
             body={post.body}
             createdAt={post.created_at}
             id={post.id}
+            imagePath={`${import.meta.env.VITE_API_URL}${post.image_path}`}
         />
     );
 }

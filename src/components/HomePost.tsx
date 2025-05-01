@@ -5,6 +5,7 @@ interface HomePostProps {
     body: string;
     createdAt: string;
     id: number;
+    imagePath: string;
 }
 
 async function handleDelete(e: number) {
@@ -30,8 +31,21 @@ async function handleDelete(e: number) {
     }
 }
 
-const HomePost: React.FC<HomePostProps> = ({ title, body, createdAt, id }) => {
+const HomePost: React.FC<HomePostProps> = ({
+    title,
+    body,
+    createdAt,
+    id,
+    imagePath,
+}) => {
     const localDate = new Date(createdAt).toLocaleString(undefined);
+    function isUploaded() {
+        if (imagePath.includes('null')) {
+            return <></>;
+        } else {
+            return <img className='home-post-image' src={imagePath} />;
+        }
+    }
     return (
         <div className='home-post'>
             <div className='home-post-header'>
@@ -41,14 +55,9 @@ const HomePost: React.FC<HomePostProps> = ({ title, body, createdAt, id }) => {
                 </button>
             </div>
             <div className='home-post-body'>
-                <img
-                    className='home-post-image'
-                    src='/picapau.jpeg'
-                    alt='Pica Pau'
-                />
-
+                {isUploaded()}
                 <p className='home-post-text'>{body}</p>
-                <time dateTime={localDate}>Posted at {localDate}</time>
+                <time dateTime={localDate}>Posted at {localDate} </time>
             </div>
         </div>
     );

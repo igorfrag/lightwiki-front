@@ -4,25 +4,25 @@ import { useNavigate } from '@tanstack/react-router';
 const NewPost: React.FC = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [image, setImage] = useState<File | null>(null);
     const navigate = useNavigate({ from: '/posts/new-post' });
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        const postData = {
-            title: title,
-            body: content,
-        };
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('body', content);
+        if (image) {
+            formData.append('image', image);
+        }
 
         try {
             const response = await fetch(
                 `${import.meta.env.VITE_API_URL}/api/new`,
                 {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(postData),
+                    body: formData,
                 }
             );
             if (response.ok) {
@@ -40,7 +40,11 @@ const NewPost: React.FC = () => {
     return (
         <div>
             <h2>Create a New Post</h2>
-            <form onSubmit={handleSubmit} className='new-post-form'>
+            <form
+                onSubmit={handleSubmit}
+                className='new-post-form'
+                encType='multipart/form-data'
+            >
                 <p>Title</p>
                 <input
                     type='text'
@@ -58,6 +62,13 @@ const NewPost: React.FC = () => {
                     placeholder='Lorem ipsum dolor sit amet'
                     style={{ resize: 'none' }}
                     onChange={(e) => setContent(e.target.value)}
+                />
+                <p>Image upload</p>
+                <input
+                    type='file'
+                    name='image'
+                    accept='image/*'
+                    onChange={(e) => setImage(e.target.files?.[0] || null)}
                 />
                 <br />
                 <button type='submit' name='button' value='submit'>
