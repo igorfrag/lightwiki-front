@@ -21,18 +21,21 @@ Este projeto pode ser instalado via docker com o docker-compose abaixo.
 #### docker-compose
 
 ```
-version: "3.8"
 services:
   frontend:
     image: igorfrag/lightwiki-frontend:latest
     ports:
-      - "5173:80"
+      - 8080:80
+    networks:
+      - lightwiki
     depends_on:
       - backend
   backend:
     image: igorfrag/lightwiki-backend:latest
     ports:
       - 3000:3000
+    networks:
+      - lightwiki
     depends_on:
       db:
         condition: service_healthy
@@ -52,6 +55,8 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    networks:
+      - lightwiki
     healthcheck:
       test:
         - CMD-SHELL
@@ -60,6 +65,10 @@ services:
       timeout: 5s
       retries: 5
 volumes:
-  pgdata:
+  pgdata: null
+networks:
+  lightwiki:
+    driver: bridge
+
 
 ```
