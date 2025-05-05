@@ -3,6 +3,7 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY package*.json ./
+ENV VITE_API_URL=""
 RUN npm install
 COPY . .
 RUN npm run build
