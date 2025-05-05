@@ -16,7 +16,8 @@ export const Route = createFileRoute('/')({
             `${import.meta.env.VITE_API_URL}/api/posts`
         );
         if (!response.ok) {
-            throw new Error('Error Fetching');
+            const posts: any = [];
+            return posts;
         }
         const posts = (await response.json()) as Post[];
         return posts;
@@ -29,16 +30,20 @@ function Index() {
     return (
         <>
             <div>
-                {posts.map((post) => (
-                    <HomePost
-                        key={post.id}
-                        id={post.id}
-                        title={post.title}
-                        body={post.body}
-                        createdAt={post.created_at}
-                        imagePath={`${import.meta.env.VITE_API_URL}${post.image_path}`}
-                    />
-                ))}
+                {posts.length === 0 ? (
+                    <p>Não há posts no momento.</p>
+                ) : (
+                    posts.map((post: Post) => (
+                        <HomePost
+                            key={post.id}
+                            id={post.id}
+                            title={post.title}
+                            body={post.body}
+                            createdAt={post.created_at}
+                            imagePath={`${import.meta.env.VITE_API_URL}${post.image_path}`}
+                        />
+                    ))
+                )}
             </div>
         </>
     );
