@@ -69,4 +69,12 @@ button:focus-visible {
     button {
         background-color: #222831;
     }
+    .new-post-form > textarea {
+        background-color: #393e46;
+        color: #dfd0b8;
+    }
+    .new-post-form > input {
+        background-color: #393e46;
+        color: #dfd0b8;
+    }
 }

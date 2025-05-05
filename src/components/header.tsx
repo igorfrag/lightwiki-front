@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import React from 'react';
+import NewPostImg from './NewPostImg.js';
 
 interface HeaderProps {
     title: string;
@@ -13,13 +14,8 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
                     <Link to='/'>
                         <h2>{title}</h2>
                     </Link>
-                    <p>Lightweight personal wiki for you!</p>
                     <Link to='/posts/new-post'>
-                        <img
-                            src='/new-page.svg'
-                            alt='Create new post'
-                            width={'24px'}
-                        />
+                        <NewPostImg fill='#dfd0b8' />
                     </Link>
                 </div>
             </div>
