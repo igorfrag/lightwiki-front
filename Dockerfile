@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY package*.json ./
-ENV VITE_API_URL=""
+ENV VITE_API_URL="http://localhost:3000"
 RUN npm install
 COPY . .
 RUN npm run build
@@ -20,6 +20,6 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copia a nova configuração personalizada do Nginx
 COPY nginx.conf /etc/nginx/conf.d
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
