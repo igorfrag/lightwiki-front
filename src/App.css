@@ -107,6 +107,10 @@
     flex-direction: column;
 }
 
+.login-button-div > button {
+    margin: 0 10px;
+}
+
 @media screen and (max-width: 480px) {
     .header-content {
         justify-content: space-around;
