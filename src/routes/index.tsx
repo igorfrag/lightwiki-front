@@ -24,6 +24,24 @@ export const Route = createFileRoute('/')({
     },
 });
 
+export async function isLogged() {
+    try {
+        const res = await fetch('http://localhost:3000/api/me', {
+            method: 'GET',
+            credentials: 'include',
+        });
+
+        if (!res.ok) {
+            return null;
+        }
+        const result = await res.json();
+        return result.user;
+    } catch (err) {
+        console.error('Erro ao autenticar', err);
+        return null;
+    }
+}
+
 function Index() {
     const posts = Route.useLoaderData();
 

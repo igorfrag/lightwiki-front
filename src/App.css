@@ -24,6 +24,14 @@
     color: #dfd0b8;
 }
 
+.header-buttons-div {
+    display: flex;
+}
+
+.header-buttons-div > div {
+    margin-right: 15px;
+}
+
 .new-post-form {
     display: flex;
     flex-direction: column;
@@ -90,6 +98,13 @@
     margin-left: 1rem;
     margin-bottom: 1rem;
     box-shadow: 5px 5px 2px 0px;
+}
+
+.login-container {
+    max-width: 85vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 480px) {
