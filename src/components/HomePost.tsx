@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@tanstack/react-router';
 
 interface HomePostProps {
     title: string;
@@ -49,7 +50,11 @@ const HomePost: React.FC<HomePostProps> = ({
     return (
         <div className='home-post'>
             <div className='home-post-header'>
-                <h2>{title}</h2>
+                <h2>
+                    <Link to='/posts/$postid' params={{ postid: `${id}` }}>
+                        {title}
+                    </Link>
+                </h2>
                 <button type='button' onClick={() => handleDelete(id)}>
                     X
                 </button>
