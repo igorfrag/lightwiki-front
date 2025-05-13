@@ -2,6 +2,8 @@
     margin: 0 auto;
     text-align: center;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -30,6 +32,10 @@
 
 .header-buttons-div > div {
     margin-right: 15px;
+}
+
+.page-content {
+    flex: 1;
 }
 
 .new-post-form {
@@ -109,6 +115,22 @@
 
 .login-button-div > button {
     margin: 0 10px;
+}
+
+.footer {
+    background-color: #393e46;
+    margin: 0px;
+    margin-top: 30px;
+}
+
+.footer > p {
+    margin: 0px;
+}
+
+.footer > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 480px) {
