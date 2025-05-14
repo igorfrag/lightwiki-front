@@ -31,6 +31,7 @@ function PostsPage() {
     const currentPage = Number(page);
     const isFirstPage = currentPage === 1;
     const isLastPage = currentPage === posts.maxPages;
+    const isSinglePage = posts.maxPages <= 1;
 
     return (
         <>
@@ -51,18 +52,8 @@ function PostsPage() {
                 )}
             </div>
 
-            {isFirstPage ? (
-                <div className='pagination-div'>
-                    <Link
-                        to='/posts/$page'
-                        params={{ page: (parseInt(page) + 1).toString() }}
-                        onClick={() =>
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                        }
-                    >
-                        <button>Next{'   >'}</button>
-                    </Link>
-                </div>
+            {isSinglePage ? (
+                <></>
             ) : isLastPage ? (
                 <div
                     className='pagination-div'
@@ -76,6 +67,18 @@ function PostsPage() {
                         }
                     >
                         <button>{'<   '}Previous</button>
+                    </Link>
+                </div>
+            ) : isFirstPage ? (
+                <div className='pagination-div'>
+                    <Link
+                        to='/posts/$page'
+                        params={{ page: (parseInt(page) + 1).toString() }}
+                        onClick={() =>
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                        }
+                    >
+                        <button>Next{'   >'}</button>
                     </Link>
                 </div>
             ) : (
