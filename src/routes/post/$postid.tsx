@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router';
 import HomePost from '../../components/HomePost';
 
-export const Route = createFileRoute('/posts/$postid')({
+export const Route = createFileRoute('/post/$postid')({
     loader: async ({ params }) => {
         const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/posts/${params.postid}`
+            `${import.meta.env.VITE_API_URL}/api/post/${params.postid}`
         );
         if (!response.ok) {
             throw new Error('Error fetching');

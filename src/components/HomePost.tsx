@@ -51,7 +51,7 @@ const HomePost: React.FC<HomePostProps> = ({
         <div className='home-post'>
             <div className='home-post-header'>
                 <h2>
-                    <Link to='/posts/$postid' params={{ postid: `${id}` }}>
+                    <Link to='/post/$postid' params={{ postid: `${id}` }}>
                         {title}
                     </Link>
                 </h2>

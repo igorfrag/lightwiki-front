@@ -5,7 +5,7 @@ const NewPost: React.FC = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [image, setImage] = useState<File | null>(null);
-    const navigate = useNavigate({ from: '/posts/new-post' });
+    const navigate = useNavigate({ from: '/post/new-post' });
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -28,7 +28,7 @@ const NewPost: React.FC = () => {
             if (response.ok) {
                 const result = await response.json();
                 console.log('Post Sucessful', result);
-                navigate({ to: `/posts/${result.id}` });
+                navigate({ to: `/post/${result.id}` });
             } else {
                 console.error('Post Failed', response.statusText);
             }

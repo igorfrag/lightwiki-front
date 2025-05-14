@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
                     </Link>
                     <div className='header-buttons-div'>
                         <div>
-                            <Link to='/posts/new-post'>
+                            <Link to='/post/new-post'>
                                 <NewPostImg fill='#dfd0b8' />
                             </Link>
                         </div>

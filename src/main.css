@@ -117,6 +117,16 @@
     margin: 0 10px;
 }
 
+.pagination-div {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    max-width: 600px;
+    flex-direction: row-reverse;
+}
+
 .footer {
     background-color: #393e46;
     margin: 0px;
@@ -181,5 +191,10 @@
 
     .new-post-form {
         max-width: 85vw;
+    }
+
+    .pagination-div {
+        padding-left: 40px;
+        padding-right: 40px;
     }
 }
