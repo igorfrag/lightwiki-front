@@ -9,6 +9,12 @@ interface Post {
     id: number;
     image_path: string;
     name: string;
+    user_id: string;
+}
+
+interface PostResponse {
+    content: Post[];
+    maxPages: number;
 }
 
 export const Route = createFileRoute('/posts/$page')({
@@ -21,7 +27,10 @@ export const Route = createFileRoute('/posts/$page')({
             const posts: any = [];
             return posts;
         }
-        const posts = (await response.json()) as Post[];
+        const posts = (await response.json()) as PostResponse;
+        if (!posts.content || !posts.maxPages) {
+            return { content: [], maxPages: 1 };
+        }
         return posts;
     },
 });
@@ -37,7 +46,7 @@ function PostsPage() {
     return (
         <>
             <div>
-                {posts.length === 0 ? (
+                {posts.content.length === 0 ? (
                     <p>Não há posts no momento.</p>
                 ) : (
                     posts.content.map((post: Post) => (
