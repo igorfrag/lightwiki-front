@@ -8,6 +8,7 @@ interface Post {
     created_at: string;
     id: number;
     image_path: string;
+    name: string;
 }
 
 export const Route = createFileRoute('/posts/$page')({
@@ -47,6 +48,7 @@ function PostsPage() {
                             body={post.body}
                             createdAt={post.created_at}
                             imagePath={`${import.meta.env.VITE_API_URL}${post.image_path}`}
+                            createdBy={post.name ? post.name : 'Anonymous'}
                         />
                     ))
                 )}

@@ -25,6 +25,7 @@ function PostPage() {
             createdAt={post.created_at}
             id={post.id}
             imagePath={`${import.meta.env.VITE_API_URL}${post.image_path}`}
+            createdBy={post.name ? post.name : 'Anonymous'}
         />
     );
 }

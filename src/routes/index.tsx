@@ -20,7 +20,7 @@ export async function isLogged() {
             return null;
         }
         const result = await res.json();
-        return result.user;
+        return { ...result };
     } catch (err) {
         console.error('Erro ao autenticar', err);
         return null;

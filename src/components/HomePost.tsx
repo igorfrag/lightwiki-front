@@ -7,6 +7,7 @@ interface HomePostProps {
     createdAt: string;
     id: number;
     imagePath: string;
+    createdBy: string;
 }
 
 async function handleDelete(e: number) {
@@ -38,6 +39,7 @@ const HomePost: React.FC<HomePostProps> = ({
     createdAt,
     id,
     imagePath,
+    createdBy,
 }) => {
     const localDate = new Date(createdAt).toLocaleString(undefined);
     function isUploaded() {
@@ -47,6 +49,7 @@ const HomePost: React.FC<HomePostProps> = ({
             return <img className='home-post-image' src={imagePath} />;
         }
     }
+
     return (
         <div className='home-post'>
             <div className='home-post-header'>
@@ -63,6 +66,7 @@ const HomePost: React.FC<HomePostProps> = ({
                 {isUploaded()}
                 <p className='home-post-text'>{body}</p>
                 <time dateTime={localDate}>Posted at {localDate} </time>
+                <p style={{ margin: '0' }}>By: {createdBy}</p>
             </div>
         </div>
     );

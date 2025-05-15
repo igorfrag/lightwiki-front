@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
+import { isLogged } from '../routes';
 
 const NewPost: React.FC = () => {
     const [title, setTitle] = useState('');
@@ -9,14 +10,16 @@ const NewPost: React.FC = () => {
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
+        const userData = await isLogged();
         const formData = new FormData();
         formData.append('title', title);
         formData.append('body', content);
         if (image) {
             formData.append('image', image);
         }
-
+        if (userData) {
+            formData.append('uuid', userData.id);
+        }
         try {
             const response = await fetch(
                 `${import.meta.env.VITE_API_URL}/api/new`,
