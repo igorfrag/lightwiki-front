@@ -28,12 +28,12 @@ const NewPost: React.FC = () => {
                     body: formData,
                 }
             );
+            const result = await response.json();
             if (response.ok) {
-                const result = await response.json();
                 console.log('Post Sucessful', result);
                 navigate({ to: `/post/${result.id}` });
             } else {
-                console.error('Post Failed', response.statusText);
+                alert(result.error);
             }
         } catch (error) {
             console.error('Error on POST', error);
@@ -66,7 +66,13 @@ const NewPost: React.FC = () => {
                     style={{ resize: 'none' }}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <p>Image upload</p>
+                <p>
+                    Image upload
+                    <span style={{ fontSize: 'x-small' }}>
+                        <br />
+                        (.png .jpeg .webp supported , max filesize: 5MB)
+                    </span>
+                </p>
                 <input
                     type='file'
                     name='image'
